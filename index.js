@@ -25,12 +25,12 @@ app.get('/fruits', (req, res) => {
 
 //Now let's add a route that takes a route parameter name and retrieves the fruit that matches the supplied name.
 app.get('/fruits/:name', (req, res) => {
-    const fruitArr = ['mango', 'watermelon', 'strawberry', 'grapes', 'blueberries', 'bananas', 'oranges', 'pineapple', 'pear']
-    for (i=0, i<fruitArr.length, i++){
-      if (req.params.name === fruit[i]){
-        res.send(fruit[i])
+    const fruitArr = ['mango', 'watermelon', 'strawberry', 'grapes', 'blueberries', 'bananas', 'oranges', 'pineapple', 'pear'];
+    for(i=0; i<fruitArr.length; i++){  
+      if (req.params.name === fruitArr[i]){
+        res.send(fruitArr[i]);
       }else{
-        res.send(`Not a fruit in the inventory`)
+        res.send(`Not a fruit in the inventory`);
       }
     }
   })
@@ -39,10 +39,18 @@ app.get('/fruits/:name', (req, res) => {
 app.get('/veggies', (req, res) => {
     const veggiesArr = [`carrots`, `celery`, `spinach`, `kale`, `cactus`]
     res.send(veggiesArr)
-  })  
+  }) 
+   
+app.get('/veggies/:name', (req, res) => {
+  const veggiesArr = [`carrots`, `celery`, `spinach`, `kale`, `cactus`]
+  for(i=0; i<veggiesArr.length; i++){  
+    if (req.params.name === veggiesArr[i]){
+      res.send(veggiesArr[i]);
+    }else{
+      res.send(`Not a veggie in the inventory`);
+    }
+  }
+})
 
-// app.get('/veggies/:name', (req, res)=>{
-//     res.send()
-// })
 //LISTENER
 app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT} 🍒`))
